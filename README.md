@@ -49,6 +49,18 @@ We keep HTML, not plain text: the headings and `<pre>` code blocks are what we c
 | 3 | `python lessons/03_chunking.py --compare "What is a Python decorator?"` | Structure-aware chunking (`ask_lmsc/chunking.py`): split at headings, keep code blocks whole and exact, drop Copy buttons, prefix each chunk with category/title/section, skip stub posts. `--compare` prints lesson 2's top 5 next to lesson 3's. |
 | 4 | `python lessons/04_pgvector.py ingest --model small` then `ask "..."` / `bench` | Chunks and vectors in Postgres + pgvector with an HNSW index (`ask_lmsc/store.py`). `--model base` loads `bge-base-en-v1.5` into its own table for comparison. `bench` reports size, query time with and without the index, and how often HNSW returns the exact top 5. |
 
+## Test console (React + FastAPI)
+
+After lesson 4's `ingest`, try everything in a browser:
+
+```bash
+uvicorn api.main:app --port 8010 --reload        # terminal 1, repo root, venv active
+cd web && npm install && npm run dev             # terminal 2 -> http://localhost:5180
+```
+
+Ask a question, read the answer with clickable `[n]` citations, switch embedding model or top-k, and
+expand each retrieved chunk to see exactly what Claude was given. See `web/README.md`.
+
 ## Check the database
 
 ```bash

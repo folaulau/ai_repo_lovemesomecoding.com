@@ -6,3 +6,5 @@ python-dotenv>=1.0           # reads ANTHROPIC_API_KEY from .env
 beautifulsoup4>=4.12        # lesson 3 chunking
 psycopg[binary]>=3.2         # lesson 4: Postgres
 pgvector>=0.3                # lesson 4: numpy <-> vector type
+fastapi>=0.115               # api/: test backend
+uvicorn[standard]>=0.30
