@@ -1,0 +1,13 @@
+# Exported posts: readers generate their own with scripts/export_posts.py
+data/
+
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs never belong in git
+*.log

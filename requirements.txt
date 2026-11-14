@@ -1,0 +1,2 @@
+requests>=2.32       # export_posts.py
+# Later lessons add: psycopg, pgvector, sentence-transformers, anthropic.

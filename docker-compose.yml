@@ -1,0 +1,24 @@
+# One container: Postgres with the pgvector extension.
+# It stores chunks, their embeddings, and the full-text index used for hybrid search.
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: ask-lmsc-db
+    environment:
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag
+      POSTGRES_DB: rag
+    ports:
+      - "${PG_PORT:-5434}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Runs once, on the first start of an empty volume.
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d rag"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  pgdata:
