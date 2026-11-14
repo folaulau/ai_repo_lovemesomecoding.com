@@ -46,6 +46,7 @@ We keep HTML, not plain text: the headings and `<pre>` code blocks are what we c
 | # | Run | What it shows |
 |---|---|---|
 | 2 | `python lessons/02_naive_rag.py "How do I create a thread in Java?"` | Naive RAG: regex HTML-to-text, fixed 1,000-char chunks, NumPy cosine search, Claude answers with citations. Add `--retrieve-only` to see the chunks without calling Claude. The first run embeds ~8,000 chunks (under a minute on Apple Silicon) and caches them in `data/naive_index.npz`. |
+| 3 | `python lessons/03_chunking.py --compare "What is a Python decorator?"` | Structure-aware chunking (`ask_lmsc/chunking.py`): split at headings, keep code blocks whole and exact, drop Copy buttons, prefix each chunk with category/title/section, skip stub posts. `--compare` prints lesson 2's top 5 next to lesson 3's. |
 
 ## Check the database
 
