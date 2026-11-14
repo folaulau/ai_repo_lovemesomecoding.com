@@ -76,6 +76,10 @@ def answer(question: str, hits: list[dict]) -> str:
         ),
         messages=[{"role": "user", "content": f"{context}\n\nQuestion: {question}"}],
     )
+    u = response.usage
+    # $4 / $20 per million input / output tokens for claude-opus-5-5
+    print(f"tokens: {u.input_tokens} in, {u.output_tokens} out "
+          f"(~${(u.input_tokens * 4 + u.output_tokens * 20) / 1e6:.4f})")
     if response.stop_reason == "refusal":
         return "(The model declined to answer.)"
     return "".join(b.text for b in response.content if b.type == "text")
