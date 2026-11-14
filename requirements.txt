@@ -1,2 +1,6 @@
-requests>=2.32       # export_posts.py
-# Later lessons add: psycopg, pgvector, sentence-transformers, anthropic.
+requests>=2.32               # export_posts.py
+numpy>=2.0
+sentence-transformers>=3.0   # local embeddings (BAAI/bge-small-en-v1.5)
+anthropic>=1.0               # answer generation
+python-dotenv>=1.0           # reads ANTHROPIC_API_KEY from .env
+# Later lessons add: psycopg, pgvector.

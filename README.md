@@ -41,6 +41,12 @@ It reads the public `search-index.json`, then saves each post's `<article>` body
 We keep HTML, not plain text: the headings and `<pre>` code blocks are what we chunk on later.
 `data/` is gitignored, so everyone generates their own copy.
 
+## Lessons
+
+| # | Run | What it shows |
+|---|---|---|
+| 2 | `python lessons/02_naive_rag.py "How do I create a thread in Java?"` | Naive RAG: regex HTML-to-text, fixed 1,000-char chunks, NumPy cosine search, Claude answers with citations. Add `--retrieve-only` to see the chunks without calling Claude. The first run embeds ~8,000 chunks (under a minute on Apple Silicon) and caches them in `data/naive_index.npz`. |
+
 ## Check the database
 
 ```bash
