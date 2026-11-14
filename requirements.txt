@@ -3,5 +3,6 @@ numpy>=2.0
 sentence-transformers>=3.0   # local embeddings (BAAI/bge-small-en-v1.5)
 anthropic>=1.0               # answer generation
 python-dotenv>=1.0           # reads ANTHROPIC_API_KEY from .env
-# Later lessons add: psycopg, pgvector.
 beautifulsoup4>=4.12        # lesson 3 chunking
+psycopg[binary]>=3.2         # lesson 4: Postgres
+pgvector>=0.3                # lesson 4: numpy <-> vector type

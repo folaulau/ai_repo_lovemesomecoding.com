@@ -119,7 +119,9 @@ def _blocks(node: Tag):
 
 
 def chunk_post(post: dict) -> list[Chunk]:
-    soup = BeautifulSoup(post["html"], "html.parser")
+    # Postgres text cannot hold NUL bytes. One post (java-data-types) has a literal NUL where it
+    # means Java's '\u0000' (the default char value), so write it the way the post intends.
+    soup = BeautifulSoup(post["html"].replace("\x00", "\\u0000"), "html.parser")
     if len(_clean(soup.get_text(" "))) < MIN_POST_CHARS:
         return []
 
